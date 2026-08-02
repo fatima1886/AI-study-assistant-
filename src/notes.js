@@ -1,53 +1,206 @@
 
 
-// 1. Imports must always be at the top of the file
-import { ForListItem } from "./listItem.js";
 
-// 2. DOM Elements
-const title = document.getElementById("note-title");
-const body = document.getElementById("note-body");
-const saveButton = document.querySelector(".Savebtn");
-const listItems = document.querySelector(".listItem");
+import { renderNotes } from "./listItem.js";
+
+// ==========================
+// DOM Elements
+// ==========================
+
+const titleInput = document.getElementById("note-title");
+const bodyInput = document.getElementById("note-body");
+
+const saveBtn = document.querySelector(".Savebtn");
+const deleteBtn = document.getElementById("deleteBtn");
+
+const searchInput = document.getElementById("search");
+
+const listContainer = document.querySelector(".listItem");
+
 const alertPara = document.querySelector(".alertPara");
 
-// 3. Logic Functions
-function saveNote() {
-    if (title.value === "" || body.value === "") {
+const selectedText = document.querySelector(".selectedNote");
+
+// ==========================
+// Data
+// ==========================
+
+let notes = JSON.parse(localStorage.getItem("allNotes")) || [];
+
+// null = creating a new note
+
+let selectedIndex = null;
+
+// ==========================
+// Save LocalStorage
+// ==========================
+
+function saveLocalStorage() {
+
+    localStorage.setItem(
+        "allNotes",
+        JSON.stringify(notes)
+    );
+
+}
+
+// ==========================
+// Refresh Sidebar
+// ==========================
+
+function refreshSidebar() {
+
+    renderNotes(
+        listContainer,
+        notes,
+        selectedIndex
+    );
+
+}
+
+// ==========================
+// Reset Inputs
+// ==========================
+
+function clearInputs() {
+
+    titleInput.value = "";
+    bodyInput.value = "";
+
+    selectedIndex = null;
+
+    selectedText.textContent =
+        "No note selected";
+
+}
+
+// ==========================
+// Initial Render
+// ==========================
+
+refreshSidebar();
+
+// ==========================
+// Save Button
+// ==========================
+
+saveBtn.addEventListener("click", () => {
+
+    const title = titleInput.value.trim();
+
+    const body = bodyInput.value.trim();
+
+    if (title === "" || body === "") {
+
         alertPara.classList.remove("hidden");
-return;
+
+        return;
+
     }
-else{
+
     alertPara.classList.add("hidden");
-    const noteCreated = {
-        title: title.value,
-        body: body.value
-    };
-    // Save JSON string to localStorage
-    localStorage.setItem("noteCreated", JSON.stringify(noteCreated));
-    parsedata();
-    // Wipe inputs dry clean
-    title.value = "";
-    body.value = "";
-}
-}
 
-function parsedata(){
-    const checkSavedData = localStorage.getItem("noteCreated");
-    if (checkSavedData) {
-        const parsedData = JSON.parse(checkSavedData);
-        
-        // Pass both the DOM target element and the data object into your module function
-        ForListItem(listItems, parsedData);
+    const note = {
+
+        title,
+        body
+
+    };
+
+    // -------------------------
+    // Create
+    // -------------------------
+
+    if (selectedIndex === null) {
+
+        notes.unshift(note);
+
     }
 
-}
+    // -------------------------
+    // Update
+    // -------------------------
 
-// 4. Event Listeners
-saveButton.addEventListener("click", () => {
-    saveNote();
-    
+    else {
+
+        notes[selectedIndex] = note;
+
+    }
+
+    saveLocalStorage();
+
+    refreshSidebar();
+
+    clearInputs();
+
 });
 
+// ==========================
+// Click Note (Event Delegation)
+// ==========================
 
+listContainer.addEventListener("click", (e) => {
 
+    const item = e.target.closest(".selectitem");
 
+    if (!item) return;
+
+    selectedIndex = Number(
+        item.dataset.index
+    );
+
+    const note = notes[selectedIndex];
+
+    titleInput.value = note.title;
+
+    bodyInput.value = note.body;
+
+    selectedText.textContent =
+        `Editing : ${note.title}`;
+
+    refreshSidebar();
+
+});
+
+// ==========================
+// Delete
+// ==========================
+
+deleteBtn.addEventListener("click", () => {
+
+    if (selectedIndex === null) return;
+
+    notes.splice(selectedIndex, 1);
+
+    saveLocalStorage();
+
+    refreshSidebar();
+
+    clearInputs();
+
+});
+
+// ==========================
+// Search
+// ==========================
+
+searchInput.addEventListener("input", () => {
+
+    const value =
+        searchInput.value.toLowerCase();
+
+    const filtered = notes.filter(note => {
+
+        return note.title
+            .toLowerCase()
+            .includes(value);
+
+    });
+
+    renderNotes(
+        listContainer,
+        filtered,
+        selectedIndex
+    );
+
+});
