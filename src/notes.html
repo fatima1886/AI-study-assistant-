@@ -70,15 +70,18 @@
               <div>
                 <label for="note-title" class="sr-only">Note title</label>
                 <input  id="note-title" type="text" placeholder="Enter note title" class="w-full rounded-xl border border-slate-200 bg-white p-4 text-lg font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-600" />
+
               </div>
     
               <div>
                 <label for="note-body" class="sr-only">Note body</label>
                 <textarea id="note-body" placeholder="Write your notes here..." class="h-64 w-full resize-none rounded-xl border border-slate-200 bg-white p-4 text-sm leading-6 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
+                
               </div>
             </div>
     
-            <div class="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-end">
+            <div class="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-end">
+              <p class="alertPara hidden text-red-600 font-semibold text-sm ">Both of these are required!</p>
               <button type="button" class="order-2 inline-flex items-center justify-center rounded-xl bg-white border border-red-200 px-5 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50 sm:order-1">Delete Note</button>
               <button type="button" class="Savebtn order-1 inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow transition hover:bg-indigo-700 sm:order-2">Save Note</button>
             </div>
