@@ -10,13 +10,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="./output.css" rel="stylesheet">
-      <script src="https://jsdelivr.net"></script>
+      <!-- <script src="https://jsdelivr.net"></script> -->
 
 
     <style>
         html {
             font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
+
+   
+
+#summaryContent h1 {
+    font-size: 2.2rem;
+    color: #4338ca;
+    margin-bottom: 1rem;
+}
+
+#summaryContent h2 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin-top: 2rem;
+}
+
+#summaryContent p {
+    line-height: 1.8;
+    color: #475569;
+}
+
+#summaryContent ul {
+    padding-left: 1.5rem;
+}
+
+#summaryContent li {
+    margin-bottom: 0.5rem;
+}
+
+#summaryContent strong {
+    color: red;
+}
     </style>
 </head>
 
@@ -167,29 +198,7 @@
                         </div>
 
                         <div id="summaryContent" class="hidden space-y-8 text-slate-700">
-                            <!-- <div>
-                                <p class="text-sm font-semibold uppercase tracking-[0.25em] text-indigo-600">Overview</p>
-                                <h3 class="mt-3 text-xl font-semibold text-slate-950">AI-generated summary</h3>
-                            </div>
-                            <div class="space-y-5">
-                                <p class="leading-8 text-slate-600">AI-powered summarization turns your study notes into a clear, concise review. It extracts the most important ideas, highlights keywords, and organizes content for fast recall.</p>
-                                <div class="space-y-4 rounded-3xl bg-white p-6 shadow-sm">
-                                    <p class="text-base font-semibold text-slate-950">Key highlights</p>
-                                    <ul class="space-y-3 pl-4 text-sm leading-7 text-slate-600 list-disc">
-                                        <li><span class="font-semibold text-slate-900">Critical concepts</span> are simplified for faster understanding.</li>
-                                        <li><span class="font-semibold text-slate-900">Process steps</span> are broken down into easy actions.</li>
-                                        <li><span class="font-semibold text-slate-900">Important terms</span> are highlighted for quick review.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="rounded-3xl bg-slate-50 p-6 text-slate-700 shadow-sm">
-                                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Key Takeaways</p>
-                                <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600">
-                                    <li class="rounded-2xl bg-white p-4 shadow-sm">Focus on the main idea and avoid minor details.</li>
-                                    <li class="rounded-2xl bg-white p-4 shadow-sm">Review the highlighted terms before exams.</li>
-                                    <li class="rounded-2xl bg-white p-4 shadow-sm">Use this summary for faster revision and memory retention.</li>
-                                </ul>
-                            </div> -->
+                          
                         </div>
                     </div>
                 </article>
@@ -200,10 +209,8 @@
 
         </div>
     </main>
-    <!-- <script src="https://jsdelivr.net"></script>
-     <script src="https://jsdelivr.net"></script> -->
-    <!-- <script src="https://cloudflare.com"></script> -->
- 
+   
+ <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
    <script type="module" src="summary.js"></script>
 </body>
 

@@ -2,6 +2,7 @@
 // import { marked } from 'https://jsdelivr.net';
 // import { marked } from 'https://unpkg.com';
 
+
 const character = document.querySelector("#characterCount");
 const summaryInput = document.querySelector("#notesInput");
 const word = document.querySelector("#wordCount");
@@ -95,7 +96,8 @@ ${textInInput}
         // CRITICAL PATH FIX: Ensure choices array index 0 is called explicitly
         if (data.choices && data.choices[0] && data.choices[0].message) {
             const resp = data.choices[0].message.content;
-            showingElements.innerText = resp;
+            // showingElements.innerText = resp;
+            showingElements.innerHTML = marked.parse(resp);
             // const aiText =resp;
             // const rawHtml = marked.parse(aiText);
             //  const cleanHtml = DOMPurify.sanitize(rawHtml);
