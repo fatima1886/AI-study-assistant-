@@ -21,6 +21,8 @@ const alertPara = document.querySelector(".alertPara");
 
 const selectedText = document.querySelector(".selectedNote");
 
+const copybtn = document.querySelector(".Copybtn");
+
 // ==========================
 // Data
 // ==========================
@@ -205,3 +207,8 @@ searchInput.addEventListener("input", () => {
 
 });
 
+copybtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(bodyInput.value);
+    copybtn.textContent = "Copied";
+    setTimeout(() => copybtn.textContent = "Copy", 2000);
+});
