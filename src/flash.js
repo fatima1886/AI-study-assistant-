@@ -16,6 +16,7 @@ const answerbox = document.querySelector("#answerbox");
 const flashcardRotate = document.querySelector(".flashcardRotate");
 const answer = document.querySelector(".answer")
 const showans = document.querySelector(".showans");
+const startNotes = document.querySelector("#StartNotes");
 // GLOBAL STATE: These variables must sit at the top so both event listeners can read and update them
 let globalArrayResp = [];
 let currentcardIndex = 0;
