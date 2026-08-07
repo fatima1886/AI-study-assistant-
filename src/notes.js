@@ -21,8 +21,6 @@ const alertPara = document.querySelector(".alertPara");
 
 const selectedText = document.querySelector(".selectedNote");
 
-const copynotes = document.querySelector("#copyNote");
-
 // ==========================
 // Data
 // ==========================
@@ -206,46 +204,4 @@ searchInput.addEventListener("input", () => {
     );
 
 });
-
-
-
-
-if (copynotes && bodyInput) {
-  copynotes.addEventListener("click", () => {
-    const textToCopy = bodyInput.value;
-
-    // 1. Try modern Clipboard API
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(textToCopy)
-        .then(() => handleSuccess())
-        .catch(err => console.error("Modern copy failed: ", err));
-    } else {
-      // 2. Fallback method for HTTP / older browsers
-      try {
-        bodyInput.select();
-        bodyInput.setSelectionRange(0, 99999); // For mobile devices
-        const successful = document.execCommand("copy");
-        if (successful) {
-          handleSuccess();
-        } else {
-          console.error("Fallback copy command failed");
-        }
-        window.getSelection().removeAllRanges(); // Deselect text
-      } catch (err) {
-        console.error("Fallback failed: ", err);
-      }
-    }
-  });
-}
-
-// Helper function to manage UI changes
-function handleSuccess() {
-  copynotes.textContent = "copied!";
-  setTimeout(() => {
-    copynotes.textContent = "Copy";
-  }, 2000);
-}
-
-
-
 
