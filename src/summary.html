@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="./output.css" rel="stylesheet">
+    <script src="./theme.js"></script>
       <!-- <script src="https://jsdelivr.net"></script> -->
 
 
@@ -51,21 +52,37 @@
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#131b2e] dark:text-slate-50">
     <main class="min-h-screen px-6 py-10 lg:px-10">
         <div class="mx-auto max-w-7xl">
             <header
-                class="mb-10 flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg sm:flex-row sm:items-center sm:justify-between">
+                class="mb-10 flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition-colors duration-300 dark:border-slate-700 dark:bg-[#1e293b] dark:shadow-[0_24px_70px_-28px_rgba(2,6,23,0.75)] sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">AI Summary</p>
-                    <h1 class="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Summarize your study
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">AI Summary</p>
+                    <h1 class="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-slate-50">Summarize your study
                         notes instantly</h1>
-                    <p class="mt-3 max-w-2xl text-base leading-7 text-slate-600">Paste your study notes and let AI
+                    <p class="mt-3 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400">Paste your study notes and let AI
                         generate an easy-to-understand summary that feels polished, helpful, and ready to review.</p>
                 </div>
-                <div class="grid gap-3 sm:auto-cols-fr sm:grid-flow-col">
+                <div class="flex flex-wrap items-center gap-3">
+                    <button id="dark-toggle-btn" type="button" aria-label="Toggle dark mode" class="group relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:bg-slate-700 dark:focus:ring-offset-[#131b2e]">
+                        <svg class="sun-icon h-5 w-5 transition duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2v2"></path>
+                            <path d="M12 20v2"></path>
+                            <path d="M4.93 4.93l1.41 1.41"></path>
+                            <path d="M17.66 17.66l1.41 1.41"></path>
+                            <path d="M2 12h2"></path>
+                            <path d="M20 12h2"></path>
+                            <path d="M4.93 19.07l1.41-1.41"></path>
+                            <path d="M17.66 6.34l1.41-1.41"></path>
+                        </svg>
+                        <svg class="moon-icon hidden h-5 w-5 transition duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+                        </svg>
+                    </button>
                     <a href="./index.html"
-                        class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Back
+                        class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:text-indigo-400">Back
                         to Home</a>
                     <a href="./notes.html"
                         class="inline-flex items-center justify-center rounded-2xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">Go
@@ -74,41 +91,41 @@
             </header>
 
             <section class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-                <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg">
+                <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg transition-colors duration-300 dark:border-slate-700 dark:bg-[#1e293b]">
                     <div class="space-y-4">
                         <div>
-                            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-indigo-600">AI Summary</p>
-                            <h2 class="mt-2 text-2xl font-semibold text-slate-950">Paste your study notes</h2>
-                            <p class="mt-2 text-sm text-slate-600">Use the AI assistant to turn long notes into concise,
+                            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-400">AI Summary</p>
+                            <h2 class="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">Paste your study notes</h2>
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Use the AI assistant to turn long notes into concise,
                                 readable summaries.</p>
                         </div>
 
                         <div>
                             <label for="notesInput" class="sr-only">Paste your notes here</label>
                             <textarea id="notesInput" rows="12" placeholder="Paste your notes here..."
-                                class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-5 py-4 text-base leading-7 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-600/20"></textarea>
+                                class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-5 py-4 text-base leading-7 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-600/20 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
                         </div>
 
                         <div class="grid gap-4 sm:grid-cols-3">
                             <div
-                                class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-600 shadow-sm">
-                                <p class="font-semibold text-slate-900">Words</p>
-                                <p id="wordCount" class="mt-2 text-lg font-semibold text-slate-950">0</p>
+                                class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-600 shadow-sm dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300">
+                                <p class="font-semibold text-slate-900 dark:text-slate-50">Words</p>
+                                <p id="wordCount" class="mt-2 text-lg font-semibold text-slate-950 dark:text-slate-100">0</p>
                             </div>
                             <div
-                                class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-600 shadow-sm">
-                                <p class="font-semibold text-slate-900">Characters</p>
-                                <p id="characterCount" class="mt-2 text-lg font-semibold text-slate-950">0</p>
+                                class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-600 shadow-sm dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300">
+                                <p class="font-semibold text-slate-900 dark:text-slate-50">Characters</p>
+                                <p id="characterCount" class="mt-2 text-lg font-semibold text-slate-950 dark:text-slate-100">0</p>
                             </div>
                             <div
-                                class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-600 shadow-sm">
-                                <p class="font-semibold text-slate-900">Reading time</p>
-                                <p id="readingTime" class="mt-2 text-lg font-semibold text-slate-950">0 min</p>
+                                class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-600 shadow-sm dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300">
+                                <p class="font-semibold text-slate-900 dark:text-slate-50">Reading time</p>
+                                <p id="readingTime" class="mt-2 text-lg font-semibold text-slate-950 dark:text-slate-100">0 min</p>
                             </div>
                         </div>
 
-                        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
-                            <p class="text-sm font-semibold text-slate-900">Summary type</p>
+                        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900/70">
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-50">Summary type</p>
                             <div class="mt-4 grid gap-3 sm:grid-cols-3">
                                 <label
                                     class="group flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-indigo-300 hover:text-indigo-900">
@@ -150,11 +167,11 @@
                     </div>
                 </article>
 
-                <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg lg:sticky lg:top-6">
+                <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg transition-colors duration-300 dark:border-slate-700 dark:bg-[#1e293b] lg:sticky lg:top-6">
                     <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
-                            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">AI Summary</p>
-                            <h2 class="mt-2 text-2xl font-semibold text-slate-950">Your output</h2>
+                            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">AI Summary</p>
+                            <h2 class="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">Your output</h2>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
                             <button id="copyBtn" type="button"
@@ -179,10 +196,10 @@
                     </div>
 
                     <div id="outputCard"
-                        class="min-h-[330px] rounded-3xl border border-dashed border-slate-200 bg-slate-50 p-8 text-slate-600">
+                        class="min-h-[330px] rounded-3xl border border-dashed border-slate-200 bg-slate-50 p-8 text-slate-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-400">
                         <div id="emptyState" class="flex h-full flex-col items-center justify-center gap-5 text-center">
                             <div
-                                class="flex h-20 w-20 items-center justify-center rounded-3xl bg-indigo-100 text-indigo-600 shadow-sm">
+                                class="flex h-20 w-20 items-center justify-center rounded-3xl bg-indigo-100 text-indigo-600 shadow-sm dark:bg-[#1a1b3a] dark:text-[#a5b4fc]">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
@@ -190,14 +207,14 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold text-slate-950">No summary generated yet</h3>
-                                <p class="mt-2 max-w-md text-sm leading-6 text-slate-500">Paste your notes and click
+                                <h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">No summary generated yet</h3>
+                                <p class="mt-2 max-w-md text-sm leading-6 text-slate-500 dark:text-slate-400">Paste your notes and click
                                     Generate Summary to see an instant overview with helpful highlights and takeaways.
                                 </p>
                             </div>
                         </div>
 
-                        <div id="summaryContent" class="hidden space-y-8 text-slate-700">
+                        <div id="summaryContent" class="hidden space-y-8 text-slate-700 dark:text-slate-300">
                           
                         </div>
                     </div>

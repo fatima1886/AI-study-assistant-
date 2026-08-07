@@ -1,1 +1,57 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --border-light: #e2e8f0;
+
+  --brand-primary: #4f46e5;
+  --brand-hover: #4338ca;
+  --brand-light: #e0e7ff;
+  --brand-light-text: #4f46e5;
+
+  --accent-success-bg: #d1fae5;
+  --accent-success-text: #059669;
+
+  --blur-cyan: rgba(186, 230, 253, 0.3);
+  --blur-indigo: rgba(224, 231, 255, 0.2);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg-main: #0b0f19;
+  --bg-surface: #131b2e;
+  --bg-surface-hover: #1e293b;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-light: #1e293b;
+
+  --brand-primary: #6366f1;
+  --brand-hover: #818cf8;
+  --brand-light: #1a1b3a;
+  --brand-light-text: #a5b4fc;
+
+  --accent-success-bg: #064e3b;
+  --accent-success-text: #34d399;
+
+  --blur-cyan: rgba(56, 189, 248, 0.15);
+  --blur-indigo: rgba(99, 102, 241, 0.1);
+}
