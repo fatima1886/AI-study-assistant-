@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Flashcards | AI Study Assistant</title> 
+   <link rel="stylesheet" href="output.css">
+    <style>
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      /* 1. This is your specific ID element */
+ </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <div class="min-h-screen px-4 py-8 sm:px-6 lg:px-10">
+      <div class="mx-auto max-w-7xl">
+        <header class="mb-8 rounded-3xl bg-white px-6 py-6 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex items-center gap-4">
+              <a href="#" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:border-indigo-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <span class="sr-only">Back</span>
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 0 1-1.414 0L3.586 10.414a1 1 0 0 1 0-1.414L8.879 3.586a1 1 0 0 1 1.414 1.414L6.414 9H17a1 1 0 1 1 0 2H6.414l4.293 4.293a1 1 0 0 1 0 1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <div>
+                <p class="text-sm font-medium uppercase tracking-[0.24em] text-slate-500">Study tools</p>
+                <h1 class="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">AI Flashcards</h1>
+              </div>
+            </div>
+            <p class="max-w-2xl text-slate-600">Generate smart flashcards from your notes to improve memory.</p>
+          </div>
+        </header>
+
+        <section class="grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
+          <div class="space-y-8">
+            <article class="rounded-3xl bg-white p-6 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200">
+              <div class="mb-6 flex items-center justify-between gap-4">
+                <div>
+                  <h2 class="text-xl font-semibold tracking-tight text-slate-900">Flashcard Generator</h2>
+                  <p class="mt-1 text-sm text-slate-600">Paste your study notes and choose the output settings.</p>
+                </div>
+                <span class="rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-700">AI Powered</span>
+              </div>
+
+              <form class="space-y-6">
+                <div>
+                  <label for="notes" class="text-sm font-medium text-slate-700">Study notes</label>
+                  <textarea id="notes" rows="8" placeholder="Paste your study notes here..." class="mt-3 w-full resize-none rounded-3xl border border-slate-200 bg-slate-50 px-5 py-4 text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"></textarea>
+                </div>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <label class="block">
+                    <span class="text-sm font-medium text-slate-700">Difficulty</span>
+                    <select class="toughSelect mt-3 w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100">
+                      <option>Easy</option>
+                      <option>Medium</option>
+                      <option>Hard</option>
+                    </select>
+                  </label>
+                  <label class="block">
+                    <span class="text-sm font-medium text-slate-700">Number of Flashcards</span>
+                    <select class="mySelect mt-3 w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100">
+                      <option>5</option>
+                      <option>10</option>
+                      <option>15</option>
+                      <option>20</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="flex justify-end">
+                  <button type="button" class="generateBtn inline-flex items-center justify-center rounded-3xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/10 transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-50">Generate Flashcards</button>
+                </div>
+              </form>
+            </article>
+
+            <article id="flashcard" class=" hidden rounded-3xl bg-white p-6 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200">
+              <div class="flex items-center justify-between gap-4 px-2 pb-4">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Flashcard session</h2>
+                  <p class="text-sm text-slate-600">Review the current flashcard and progress through your study set.</p>
+                </div>
+                <span class="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">Live preview</span>
+              </div>
+
+              <div class="space-y-6 rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <div>
+                  <div class="mb-3 flex items-center justify-between gap-4 text-sm text-slate-600">
+                    <span>Card <span class="currentNUM">0</span> of <span class="totalNUM">0</span></span>
+                    <span>Progress</span>
+                  </div>
+                  <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                    <div id="progressLine" class="h-full  rounded-full bg-indigo-600"></div>
+                  </div>
+                </div>
+
+                <div  class="flashcardRotate rounded-[2rem] border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300">
+                  <div id="questionbox">
+                  <p class="text-sm font-medium uppercase tracking-[0.3em] text-indigo-600">Current Question</p>
+                  <h3 id="question" class="mt-4 text-2xl font-semibold text-slate-900 "></h3> 
+                  <p class="showans hidden text-sm font-medium uppercase tracking-[0.3em] text-indigo-600 mt-6 ">Answer</p>
+                   <p class="answer hidden mt-4 max-w-2xl mx-auto text-base leading-7 text-slate-600">A study technique that forces your brain to retrieve information from memory instead of just reviewing notes.</p>
+                   </div>
+                </div> 
+
+
+             
+  
+ 
+
+
+
+                 
+
+                <div class="grid gap-3 sm:grid-cols-3">
+                  <button type="button" class= "previousBtn rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-indigo-300 hover:bg-slate-50">Previous</button>
+                  <button type="button" class="flipBtn rounded-3xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">Show Answer</button>
+                  <button type="button" class="nextbtn rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-indigo-300 hover:bg-slate-50">Next</button>
+                </div>
+
+               
+              </div>
+            </article>
+
+            <article class="rounded-3xl bg-white p-10 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200">
+              <div class="flex flex-col items-center gap-6 text-center">
+                <div class="flex h-24 w-24 items-center justify-center rounded-3xl bg-indigo-50 text-indigo-600">
+                  <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H9l-4 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10z" />
+                  </svg>
+                </div>
+                <div class="space-y-2">
+                  <h2 class="text-2xl font-semibold text-slate-900">No Flashcards Yet</h2>
+                  <p class="max-w-xl text-sm leading-6 text-slate-600">Paste your notes and generate AI-powered flashcards.</p>
+                </div>
+                <div class="flex flex-col items-center gap-3 sm:flex-row">
+              
+                  <a href="notes.html" id="StartNotes" class="rounded-full bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700">Start with your notes</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </section>
+      </div>
+    </div>
+
+<!-- Put this in your HTML file to load Google AI -->
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run"
+    }
+  }
+</script>
+
+    <script src="flash.js"></script>
+  </body>
+</html>
+
+
+
