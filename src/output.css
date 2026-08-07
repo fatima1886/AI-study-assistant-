@@ -63,8 +63,6 @@
     --text-5xl--line-height: 1;
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
-    --text-7xl: 4.5rem;
-    --text-7xl--line-height: 1;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
@@ -400,9 +398,6 @@
   }
   .min-h-screen {
     min-height: 100vh;
-  }
-  .w-1\/4 {
-    width: calc(1 / 4 * 100%);
   }
   .w-3\/4 {
     width: calc(3 / 4 * 100%);
