@@ -48,7 +48,7 @@ generateBtn.addEventListener("click", async () => {
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer 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',
+                'Authorization': 'Bearer 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',
                 'Content-Type': 'application/json',
                 // Mandatory for browser tracking attribution
                 'HTTP-Referer': window.location.origin,

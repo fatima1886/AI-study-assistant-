@@ -181,10 +181,10 @@ function goBack() {
 
 // FIX: Next Button logic to update everything step by step
 nextBtn.addEventListener("click", () => {
-  numbering();
   // Check if we still have questions left to display
   if (currentcardIndex < globalArrayResp.length - 1) {
     currentcardIndex++; // Increment index first
+    numbering();
     question.textContent = globalArrayResp[currentcardIndex].question; // Display next question
     updateProgress(); // Advance progress bar
   } else {
