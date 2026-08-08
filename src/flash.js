@@ -115,8 +115,9 @@ ${noteText}
       const resp = data.choices[0].message.content;
 
       // FIX: Store the results into our global variable instead of a local block variable
-      globalArrayResp = JSON.parse(resp.trim());
-
+      
+      // globalArrayResp = JSON.parse(resp.trim());
+  globalArrayResp = JSON.parse(resp.replace(/```json|```/g, "").trim());
       if (globalArrayResp.length === 0) return;
 
       // Load the very first question right away
@@ -233,3 +234,26 @@ function numbering() {
   number.textContent = currentNUM;
   total.textContent = totalNUM;
 }
+
+
+// const darkBtn = document.querySelector("#dark-btn");
+// darkBtn.addEventListener("click",()=>{
+//   document.documentElement.classList.toggle("dark");
+// })
+const darkBtn = document.querySelector("#dark-btn");
+const faviconElement = document.getElementById("favicon");
+
+darkBtn.addEventListener("click", () => {
+  // 1. Toggle class selectors across elements
+  const isDarkNow = document.documentElement.classList.toggle("dark");
+  document.body.classList.toggle("dark-theme", isDarkNow);
+  
+  // 2. Persist selection to local storage
+  const nextTheme = isDarkNow ? "dark" : "light";
+  localStorage.setItem("theme", nextTheme);
+  
+  // 3. Dynamic favicon switch (safely handles missing links)
+  if (faviconElement) {
+    faviconElement.href = isDarkNow ? "favicons/dark-logo.png" : "favicons/light-logo.png";
+  }
+});
