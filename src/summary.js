@@ -10,6 +10,8 @@ const time = document.querySelector("#readingTime");
 const generateBtn = document.querySelector("#generateBtn");
 const hidingElements = document.querySelector("#emptyState");
 const showingElements = document.querySelector("#summaryContent");
+const copy = document.querySelector("#copyBtn");
+
 
 
 
@@ -117,3 +119,7 @@ ${textInInput}
 
 //    const summarizedtextContent = await summarizing(textInInput);
 // showingElements.innerText = `${summarizedtextContent}`;
+ copy.addEventListener("click",()=>{
+    navigator.clipboard.writeText(showingElements.innerText);
+    copy.textContent = "Copied!";
+ })
