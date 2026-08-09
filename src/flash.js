@@ -78,7 +78,7 @@ ${noteText}
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer API_KEY',
         'Content-Type': 'application/json',
         'HTTP-Referer': window.location.origin,
         'X-OpenRouter-Title': 'My Testing App'
