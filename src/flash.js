@@ -85,7 +85,7 @@ ${noteText}
       },
       body: JSON.stringify({
         // model: 'nvidia/nemotron-3-nano-30b-a3b:free',
-        model: 'inclusionai/ling-3.0-tiny:free',
+       model: 'apodex/apodex-1.1-mini:free',
         messages: [{ role: 'user', content: prompt }],
       }),
     });

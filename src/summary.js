@@ -58,7 +58,7 @@ generateBtn.addEventListener("click", async () => {
             },
             body: JSON.stringify({
                 // Using a completely free model ensures zero-balance accounts don't throw a 402 error
-                model: 'nvidia/nemotron-3-nano-30b-a3b:free',
+                model: 'apodex/apodex-1.1-mini:free',
                 messages: [
                     {
                         role: 'user',
